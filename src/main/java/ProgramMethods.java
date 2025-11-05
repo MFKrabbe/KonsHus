@@ -8,9 +8,9 @@ import Skill.SkillDAOImpl;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu
+public class ProgramMethods
 {
-    public Menu() {}
+    public ProgramMethods() {}
     CustomerDao dao = new CustomerDaoImpl();
     SkillDAO skillDAO = new SkillDAOImpl();
     Scanner in = new Scanner(System.in);
@@ -254,92 +254,3 @@ public class Menu
         }while(isOn);
     }
 }
-
-
-
-/*public class Main
-{
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        SkillDAO skillDAO = new SkillDAOImpl();
-        boolean programRunning = true;
-
-        while (programRunning)
-        {
-            System.out.println("\n      === MENU ===");
-            System.out.println("1. Vis alle kompetencer");
-            System.out.println("2. Tilføj ny kompetence");
-            System.out.println("3. Opdater en kompetence");
-            System.out.println("4. Slet en kompetence");
-            System.out.println("0. Afslut program");
-            System.out.print("Vælg en mulighed fra 1. til 4. og 0. for at afslutte: ");
-
-            String choice = scanner.nextLine();
-
-            try
-            {
-                switch (choice)
-                {
-                    case "1":
-                        // Denne case skal vise alle skills
-                        List<Skill> skills = skillDAO.getAllSkills();
-                        if (skills.isEmpty()) //Tjekker om der er en værdi
-                        {
-                            System.out.println("Ingen kompetencer fundet.");//Printes hvis der ingen værdi er i tblSkill->fldSkillCategory
-                        } else
-                        {
-                            System.out.println("\n--- Alle skills ---");
-                            for (Skill s : skills) //Ellers printes alle kompetencer i tblSkill->fldSkillCategory ud til konsol
-                            {
-                                System.out.println(s);
-                            }
-                        }
-                        break;
-
-                    case "2":
-                        // Denne case skal gemme i dbKonsulenternesHus
-                        System.out.print("Indtast ID: ");
-                        String id = scanner.nextLine();
-                        System.out.print("Indtast kategori: ");
-                        String category = scanner.nextLine();
-                        Skill newSkill = new Skill(id, category);
-                        skillDAO.saveSkill(newSkill);
-                        break;
-
-                    case "3":
-                        // Denne case skal opdatere en enkelt kompetence i fldSkillCategory ud fra fldSkillID
-                        System.out.print("Indtast ID på skill der skal opdateres: ");
-                        String updateId = scanner.nextLine();
-                        System.out.print("Indtast ny kategori: ");
-                        String newCategory = scanner.nextLine();
-                        Skill updatedSkill = new Skill(updateId, newCategory);
-                        skillDAO.updateSkill(updateId, updatedSkill);
-                        break;
-
-                    case "4":
-                        // Denne case skal slette en kompetence i tblSkill->fldSkillCategory
-                        System.out.print("Indtast ID på kompetence der skal slettes: ");
-                        String deleteId = scanner.nextLine();
-                        skillDAO.deleteSkill(deleteId);
-                        break;
-
-                    case "0":
-                        programRunning = false;
-                        System.out.println("Program afsluttes...");
-                        break;
-
-                    default:
-                        System.out.println("Ugyldigt valg – prøv igen.");
-                }
-            } catch (Exception e)
-            {
-                System.out.println("Fejl: " + e.getMessage());
-            }
-        }
-
-        scanner.close();
-    }
-}
-
- */
